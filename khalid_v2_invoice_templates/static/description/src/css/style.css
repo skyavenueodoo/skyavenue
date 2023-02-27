@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'MonixBold';
+    src: local('MonixBold'), local('MonixBold'), url(/khalid_v2_invoice_templates/static/description/src/fonts/PFDinTextUniversal-Regular.otf) format('opentype');
+}
+
+.mabco_font {
+    font-family: MonixBold;
+}

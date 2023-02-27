@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_company_custom_inherit_form_view" model="ir.ui.view">
+            <field name="name">res_company_inherit.inherit_form_view</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <br/>
+                    <field name="arabic_name" placeholder="اﻹسم بالعربية"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Report Footer Configuration">
+                        <group>
+                            <field name="report_footer_text_arabic1"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Report Header Configuration">
+                        <group>
+                            <field name="other_name1"/>
+                            <field name="other_name"/>
+                        </group>
+                    </page>
+                </xpath>
+                <field name="website" position="after">
+                    <field name="terms_conditons_invoise"/>
+                    <field name="terms_conditons" attrs="{'invisible': [('terms_conditons_invoise','=',False)]}"/>
+                </field>
+
+            </field>
+        </record>
+
+        <record id="account_invoice_inherit_form_view" model="ir.ui.view">
+            <field name="name">account_invoice_inherit.inherit_form_view</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_reference']" position="after">
+                    <field name="bank_account_id"/>
+                    <field name="date_config"/>
+
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_partner_bank_inherit_form_view" model="ir.ui.view">
+            <field name="name">res_partner_bank_inherit.inherit_form_view</field>
+            <field name="model">res.partner.bank</field>
+            <field name="inherit_id" ref="base.view_partner_bank_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <field name="branch_name"/>
+                    <label for="street" string="Address"/>
+                    <div class="o_address_format">
+                        <field name="street" placeholder="Street..." class="o_address_street"/>
+                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                        <field name="city" placeholder="City" class="o_address_city"/>
+                        <field name="state_id" class="o_address_state" placeholder="State"/>
+                        <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                        <field name="country_id" placeholder="Country" class="o_address_country"/>
+                    </div>
+                    <field name="swift_code"/>
+                    <field name="iban_number"/>
+                    <field name="ifsc"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>
