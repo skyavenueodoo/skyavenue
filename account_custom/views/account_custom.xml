@@ -12,6 +12,11 @@
                     <field name="project_amount" force_save="1" optional="show"/>
                     <field name="co_per" force_save="1" optional="show"/>
                 </xpath>
+                <xpath expr="//form/sheet/notebook/page[2]/field[@name='line_ids']/tree/field[@name='account_id']" position="after">
+                    <field name="phase" invisible="1" />
+                    <field name="project_amount" invisible="1" optional="show"/>
+                    <field name="co_per" invisible="1" optional="show"/>
+                </xpath>
                 <xpath expr="//form/sheet/notebook/page[1]/field[@name='invoice_line_ids']/tree/field[@name='quantity']" position="replace">
                     <field name="quantity" optional="hide"/>
                 </xpath>
