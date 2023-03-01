@@ -19,6 +19,11 @@
                             </t>
                         </t>
                         <div class="header" style="padding-bottom:10px;font-family:MonixBold;direction:rtl;">
+                            <div class="row">
+                                <div class="col-12" style="position: fixed;opacity: 0.11;z-index: -99999999;top: 450px;text-align: center;">
+                                    <img t-if="company.logo" style="width:80%" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" />
+                                </div>
+                            </div>
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>
@@ -151,6 +156,8 @@
                                             <span t-field="company.street2"/>
                                         </td>
                                         <td class="padding_style" style="text-align:left;width:50%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
+                                            <span t-field="o.partner_id.street2"/>
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -158,6 +165,7 @@
                                             <span t-field="company.street"/>
                                         </td>
                                         <td class="padding_style" style="text-align:left;width:50%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
+                                            <span t-field="o.partner_id.street"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -165,6 +173,7 @@
                                             <span t-field="company.city"/>
                                         </td>
                                         <td class="padding_style" style="text-align:left;width:50%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
+                                            <span t-field="o.partner_id.city"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -172,6 +181,7 @@
                                             <span t-field="company.phone"/>
                                         </td>
                                         <td class="padding_style" style="text-align:left;width:50%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
+                                            <span t-field="o.partner_id.phone"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -181,6 +191,9 @@
                                             <span t-field="company.country_id"/>
                                         </td>
                                         <td class="padding_style" style="text-align:left;width:50%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
+                                            <span t-field="o.partner_id.state_id"/>
+    ,
+                                            <span t-field="o.partner_id.country_id"/>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -206,7 +219,10 @@
                                             CLIENT NAME                                        </th>
                                         <th class="padding_style" style="text-align:center;width:20%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
                                             PHASE                                        </th>
-                                        <th class="padding_style" style="text-align:center;width:20%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
+                                        <th t-if="o.sale_rent == 'sale' " class="padding_style" style="text-align:center;width:20%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
+                                            SALE
+                                            PRICE (AED)                                        </th>
+                                        <th t-if="o.sale_rent != 'sale' " class="padding_style" style="text-align:center;width:20%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
                                             RENTAL
                                             PRICE (AED)                                        </th>
                                         <th class="padding_style" style="text-align:center;width:20%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
@@ -238,6 +254,7 @@
                                         </td>
                                         <td class="padding_style" style="text-align:center;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
                                             <span t-field="line.co_per"/>
+%
                                         </td>
                                         <td class="padding_style" style="text-align:center;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
                                             <span t-field="line.price_unit"/>
@@ -250,14 +267,27 @@
                                             </strong>
                                         </td>
                                         <td class="padding_style" style="text-align:center;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
-                                        <span t-field="o.amount_total"/>
+                                            <span t-field="o.amount_total"/>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <div style="direction: rtl;text-align:left">
+                            <div style="direction: ltr;text-align:left">
                                 <span t-field="o.narration"/>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div style="direction: ltr;margin-top:20px" class="row">
+                                <div class="col-4" style="direction: ltr;text-align:left;border-top:1px solid black">
+                                    <div>
+                                        Finance Dept.
+                                    </div>
+                                    <span t-field="company.name"/>
+
+                                </div>
+                                <div class="col-8" style="direction: ltr;text-align:left">
+                                </div>
                             </div>
 
                         </div>

@@ -5,11 +5,17 @@ _logger = logging.getLogger(__name__)
 
 
 class AccountMove(models.Model):
+    _inherit = 'account.move'
+
+    sale_rent = fields.Selection(string='Invoice Type', selection=[('sale', 'Sale'), ('rent', 'Rent'),],default='sale')
+    
+
+class AccountMove(models.Model):
     _inherit = 'account.move.line'
 
     phase = fields.Char(string='Phase',store=True)
     co_per = fields.Float(string='Percentage',store=True)
-    project_amount = fields.Float(string='Rental Price',store=True)
+    project_amount = fields.Float(string='Total Price',store=True)
     name = fields.Char(string='Label', tracking=True, default="/")
 
     @api.onchange('co_per', 'project_amount')
