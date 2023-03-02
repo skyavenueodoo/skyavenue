@@ -260,8 +260,8 @@
                                             <span t-field="line.price_unit"/>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td t-if="o.amount_tax != 0" colspan="5" style="padding-top:0px;padding-bottom:0px;padding-left:10px;padding-left:10px;text-align:right;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
+                                    <tr t-if="o.amount_tax != 0">
+                                        <td  colspan="5" style="padding-top:0px;padding-bottom:0px;padding-left:10px;padding-left:10px;text-align:right;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
                                             <strong>
                                             TAX
                                             </strong>
