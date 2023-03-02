@@ -13,6 +13,7 @@ class AccountMove(models.Model):
 class AccountMove(models.Model):
     _inherit = 'account.move.line'
 
+    unit_no = fields.Char(string='Unit NO',store=True)
     phase = fields.Char(string='Phase',store=True)
     co_per = fields.Float(string='Percentage',store=True)
     project_amount = fields.Float(string='Total Price',store=True)

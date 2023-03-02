@@ -122,12 +122,12 @@
                                 .padding_style {
             
                                 padding-left: 10px !important;
-                                padding-right: 0px !important;
+                                padding-right: 10px !important;
                                 padding-top: 0px !important;
                                 padding-bottom: 0px !important;
                                 
                                 }
-                
+                 
                     
                             </style>
 
@@ -212,22 +212,22 @@
                             <table style="direction:ltr;" class="table">
                                 <thead>
                                     <tr>
-                                        <th class="padding_style" style="text-align:center;width:5%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
+                                        <th class="padding_style" style="text-align:center;width:13%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
                                             UNIT No
                                         </th>
-                                        <th class="padding_style" style="text-align:center;width:20%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
+                                        <th class="padding_style" style="text-align:center;width:23%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
                                             CLIENT NAME                                        </th>
-                                        <th class="padding_style" style="text-align:center;width:20%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
+                                        <th class="padding_style" style="text-align:center;width:19%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
                                             PHASE                                        </th>
-                                        <th t-if="o.sale_rent == 'sale' " class="padding_style" style="text-align:center;width:20%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
+                                        <th t-if="o.sale_rent == 'sale' " class="padding_style" style="text-align:center;width:15%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
                                             SALE
                                             PRICE (AED)                                        </th>
                                         <th t-if="o.sale_rent != 'sale' " class="padding_style" style="text-align:center;width:20%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
                                             RENTAL
                                             PRICE (AED)                                        </th>
-                                        <th class="padding_style" style="text-align:center;width:20%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
-                                            DUE COMMISSION
-                                            (%)
+                               
+                                        <th class="padding_style" style="text-align:center;width:15%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
+                                            DUE COMMISSION (%)
                                         </th>
                                         <th class="padding_style" style="text-align:center;width:15%;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 2px solid #666666;">
                                             DUE
@@ -240,8 +240,8 @@
                                     <t t-set="n" t-value="1"/>
                                     <tr t-foreach="o.invoice_line_ids" t-as="line">
                                         <td class="padding_style" style="text-align:center;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
-                                            <t t-esc="n"/>
-                                            <t t-set="n" t-value="n+1"/>
+                                            <span t-field="line.unit_no"/>
+
                                         </td>
                                         <td class="padding_style" style="text-align:left;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
                                             <span t-field="line.move_id.partner_id"/>
@@ -258,6 +258,16 @@
                                         </td>
                                         <td class="padding_style" style="text-align:center;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
                                             <span t-field="line.price_unit"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td t-if="o.amount_tax != 0" colspan="5" style="padding-top:0px;padding-bottom:0px;padding-left:10px;padding-left:10px;text-align:right;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
+                                            <strong>
+                                            TAX
+                                            </strong>
+                                        </td>
+                                        <td class="padding_style" style="text-align:center;border-left: 1px solid #b2b2b2;border-right: 1px solid #b2b2b2;border-top: 1px solid #b2b2b2;border-bottom: 1px solid #b2b2b2;">
+                                            <span t-field="o.amount_tax"/>
                                         </td>
                                     </tr>
                                     <tr>
